@@ -48,10 +48,3 @@ export function truncateToWords (str, max = 10) {
   const ellipsis = array.length > max ? '...' : ''
   return array.slice(0, max).join(' ') + ellipsis
 }
-
-export function localizeText (text, lang = 'en') {
-  return text[lang]
-}
-export function localizeBlockText (blockText, lang = 'en') {
-  return blockText[lang]
-}

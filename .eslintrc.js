@@ -3,7 +3,7 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'object-curly-spacing': ['error', 'never'],
-    "react/jsx-pascal-case": [1, { allowAllCaps: true }]
+    "react/jsx-pascal-case": [0, { allowAllCaps: true }]
   },
   settings: {
     react: {

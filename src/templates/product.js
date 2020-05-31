@@ -41,43 +41,43 @@ const BlogPostTemplate = (props) => {
 
 export default BlogPostTemplate
 
-export const query = graphql`
-  query ProductTemplateQuery($id: String!) {
-    product: sanityProduct(id: {eq: $id}) {
-      id
-      categories {
-        _id
-        title
-      }
-      images {
-        asset {
-          url
-          fluid(maxWidth: 700) {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      title {
-        en
-        ro
-      }
-      price
-      vendor{
-        title
-      }
-      slug {
-        current
-      }
-      _rawBlurb(resolveReferences: {maxDepth: 5}) 
-      _rawBody(resolveReferences: {maxDepth: 5})
-      seoTitle{
-        en
-        ro
-      }
-      seoDescription{
-        en
-        ro
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query ProductTemplateQuery($id: String!) {
+//     product: sanityProduct(id: {eq: $id}) {
+//       id
+//       categories {
+//         _id
+//         title
+//       }
+//       images {
+//         asset {
+//           url
+//           fluid(maxWidth: 700) {
+//             ...GatsbySanityImageFluid
+//           }
+//         }
+//       }
+//       title {
+//         en
+//         ro
+//       }
+//       price
+//       vendor{
+//         title
+//       }
+//       slug {
+//         current
+//       }
+//       _rawBlurb(resolveReferences: {maxDepth: 5})
+//       _rawBody(resolveReferences: {maxDepth: 5})
+//       seoTitle{
+//         en
+//         ro
+//       }
+//       seoDescription{
+//         en
+//         ro
+//       }
+//     }
+//   }
+// `

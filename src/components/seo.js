@@ -77,14 +77,14 @@ function SEO ({description, meta, title, seoTitle, image}) {
 
 export default SEO
 
-const detailsQuery = graphql`
-  query DefaultSEOQuery {
-    site {
-      buildTime(formatString: "YYYY-MM-DD")
-    }
-    siteSettings: sanitySiteSettings(_id: {eq: "siteSettings"}) {
-      title
-      description
-    }
-  }
-`
+// const detailsQuery = graphql`
+//   query DefaultSEOQuery {
+//     site {
+//       buildTime(formatString: "YYYY-MM-DD")
+//     }
+//     siteSettings: sanitySiteSettings(_id: {eq: "siteSettings"}) {
+//       title
+//       description
+//     }
+//   }
+// `

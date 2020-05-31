@@ -11,7 +11,7 @@ const Header = () => {
       <Container>
         <div className='navContainer'>
           <Link to='/' className='logo'>
-            My Banat Souvenirs
+            Marianna's Fundraisers
           </Link>
           <Nav />
         </div>

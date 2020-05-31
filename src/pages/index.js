@@ -1,102 +1,64 @@
 /** @jsx jsx */
-import {jsx, Container} from 'theme-ui'
+import {jsx, Container, Styled} from 'theme-ui'
 import React, {useEffect} from 'react' // eslint-disable-line
 import {graphql} from 'gatsby'
-import {mapEdgesToNodes, localizeText} from '../lib/helpers'
-import SEO from '../components/seo'
-
+import {mapEdgesToNodes} from '../lib/helpers'
+// import SEO from '../components/seo'
+import {Link} from 'gatsby'
 // modules
-import FeaturedProducts from '../modules/featured-products'
 
 export default (props) => {
   const {data} = props
-  const productsEdges = data && data.homeProducts
-  const productsNodes = mapEdgesToNodes(productsEdges)
+  const fundraiserEdges = data && data.allSanityFundraiser
+  const fundraiserNodes = mapEdgesToNodes(fundraiserEdges)
 
-  useEffect(() => {
-    // typeof window !== 'undefined' && window.fetch('/.netlify/functions/hello')
-    //   .then(response => response.json())
-    //   .then(console.log)
+  // useEffect(() => {
+  //   // typeof window !== 'undefined' && window.fetch('/.netlify/functions/hello')
+  //   //   .then(response => response.json())
+  //   //   .then(console.log)
 
-    typeof window !== 'undefined' && window.fetch('https://app.snipcart.com/api/products', {
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'Basic U1RfWWpRMVlqVTBNamt0TkRnM09DMDBabU0wTFRrNFlXTXRaRGhoTkdVek1EZGlPV00yTmpNM01qTTFPRFV5TXpVek1ETXpNVEV5Og=='
-      }
-    })
-      .then(response => response.json())
-      .then(console.log)
-  })
+  //   typeof window !== 'undefined' && window.fetch('https://app.snipcart.com/api/products', {
+  //     headers: {
+  //       Accept: 'application/json',
+  //       Authorization: 'Basic U1RfWWpRMVlqVTBNamt0TkRnM09DMDBabU0wTFRrNFlXTXRaRGhoTkdVek1EZGlPV00yTmpNM01qTTFPRFV5TXpVek1ETXpNVEV5Og=='
+  //     }
+  //   })
+  //     .then(response => response.json())
+  //     .then(console.log)
+  // })
 
   return (
     <>
-      <SEO seoTitle='My Banat Souvenirs' />
-
-      <FeaturedProducts productsNodes={productsNodes} />
+      {/* <SEO seoTitle="Marianna's Fundraisers" /> */}
+      <section>
+        <Container>
+          <Styled.h2>Fundraisers</Styled.h2>
+          <ul>
+            {fundraiserNodes.map(({content: {main: {name, slug}}}) => (
+              <li key={slug.current}><Link to={`/${slug.current}/`}>{name}</Link></li>
+            ))}
+          </ul>
+        </Container>
+      </section>
     </>
   )
 }
 
 export const query = graphql`
-fragment SanityImage on SanityImage {
-    crop {
-      _key
-      _type
-      top
-      bottom
-      left
-      right
-    }
-    hotspot {
-      _key
-      _type
-      x
-      y
-      height
-      width
-    }
-    asset {
-      _id
-    }
-  }
-
-  query IndexProductsQuery {
-    homeProducts: allSanityProduct {
-      edges {
+query IndexFundraiserQuery {
+  allSanityFundraiser {
+    edges {
         node {
-          id
-          categories {
-            _id
-            title
-          }
-          title {
-            en
-            ro
-          }
-          images {
-            asset {
-              fixed(width: 400) {
-                ...GatsbySanityImageFixed
+          content {
+            main {
+              slug {
+                current
               }
-              fluid(maxWidth: 400) {
-                ...GatsbySanityImageFluid
-              }
+              name
             }
-          }
-          slug {
-            current
-          }
-          blurb {
-            en
-            ro
-          }
-          price
-          vendor{
-            title
           }
         }
       }
     }
   }
-  
-`
+  `

@@ -23,19 +23,19 @@ const Footer = () => {
       <Container sx={{variant: ['utils.textCenter']}}>
         <div sx={footerContentStyles}>
           <div className='column' sx={{textAlign: ['inherit', null, 'left'], mb: [4, null, 0]}}>
-            <h6>My Banat Souvenirs</h6>
-            <p>Timisoara Tour Guide S.R.L.</p>
+            <h6>Marianna's Fundraisers</h6>
+            <p>Delgrosso Foods Inc.</p>
             <ul sx={{variant: 'lists.reset', li: {mb: 4, a: {variant: 'utils.noUnderline'}, svg: {mr: 2}}}}>
               <li>
                 <FaMapMarkerAlt />
-                Calea Torontalului nr.6 sc.A ap.11 <br />
-                300628 Timisoara, Romania
+                632 Sauce Factory Drive<br />
+                Tipton, Pennsylvania 16684
               </li>
               <li>
-                <a href='mailto:contact@banatdesign.com'><FaEnvelope /> contact@banatdesign.com</a>
+                <a href='mailto:contact@mariannasfundraisers.com'><FaEnvelope />contact@mariannasfundraisers.com</a>
               </li>
               <li>
-                <a href='tel:+40-742-112-174'><FaPhone /> +40 742 112 174</a>
+                <a href='tel:+1-800-521-5880'><FaPhone />+1-800-521-5880</a>
               </li>
             </ul>
           </div>
@@ -82,7 +82,7 @@ const Footer = () => {
         <p sx={{
           fontSize: 0
         }}
-        >Copyright &copy;{new Date().getFullYear()} <a href='https://timisoaratourguide.com' target='_blank' rel='noopener noreferrer'>Timisoara Tour Guide</a>, All Rights Reserved. | Website by <a href='https://ovswebsites.com' target='_blank' rel='noopener noreferrer'>OVS Websites</a>
+        >Copyright &copy;{new Date().getFullYear()} <a href='https://www.delgrossos.com' target='_blank' rel='noopener noreferrer'>Delgrosso Foods Inc.</a>, All Rights Reserved. | Website by <a href='https://ovswebsites.com' target='_blank' rel='noopener noreferrer'>OVS Websites</a>
         </p>
       </Container>
     </footer>

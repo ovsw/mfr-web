@@ -16,13 +16,11 @@ const Layout = ({children}) => {
         variant: ['styles']
       }}
       >
-        <Container sx={{}}>
+        {/* <Container sx={{}}>
           <div sx={{border: '1px solid black', px: 5, py: 4, mt: '2rem!important'}}>
-
             <p>This website is in development.</p>
-            <p>We're working hard to bring you authenitc, hand-crafted, culture-specific souveniers and gifts from Romania's Banat region.</p>
           </div>
-        </Container>
+        </Container> */}
       </section>
       {children}
       <Footer />
