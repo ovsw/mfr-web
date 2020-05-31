@@ -56,7 +56,7 @@ const Fundraiser = ({path, pageContext}) => {
                   data-item-price={price}
                   data-item-name={name}
                   data-item-description='short description here'
-                  // data-item-image={images[0].asset.fluid.src}
+                  data-item-image={image.asset.url}
                   data-item-url={'https://mfr.netlify.app/' + slug.current + '/'}
                 >Add to Cart
                 </button>
