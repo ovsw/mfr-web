@@ -13,6 +13,7 @@ exports.createPages = async ({graphql, actions, reporter}) => {
     allSanityFundraiser {
       edges {
         node {
+          _id
           _rawContent(resolveReferences: {maxDepth: 9})
         }
       }
@@ -29,12 +30,22 @@ exports.createPages = async ({graphql, actions, reporter}) => {
 
   fundraiserPages.forEach((edge, index) => {
     const path = `/${edge.node._rawContent.main.slug.current}/`
-
     reporter.info(`Creating fundraiser page: ${path}`)
 
     createPage({
       path,
       component: require.resolve('./src/templates/fundraiser.js'),
+      context: {...edge.node._rawContent}
+    })
+  })
+
+  fundraiserPages.forEach((edge, index) => {
+    const path = `/${edge.node._rawContent.main.slug.current}/${edge.node._id}/`
+    reporter.info(`Creating dashboard page: ${path}`)
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/dashboard.js'),
       context: {...edge.node._rawContent}
     })
   })

@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import {jsx, Styled, Container} from 'theme-ui'
-import React from 'react' // eslint-disable-line
+import React, {useEffect, useState} from 'react' // eslint-disable-line
 // import SEO from '../components/seo'
 // import RenderModules from '../lib/renderModules'
 
+import Product from '../components/dashboard/analytics/productRow'
+
 const Fundraiser = ({path, pageContext}) => {
   // console.log(pageContext)
-
   const {
     main: {
       fundraiserId,
@@ -17,13 +18,20 @@ const Fundraiser = ({path, pageContext}) => {
     }
   } = pageContext
 
+  const [totalSales, setTotalSales] = useState(0)
+
+  const addToTotalSales = (amountToAdd) => {
+    const newTotal = totalSales + amountToAdd
+    setTotalSales(newTotal)
+  }
+
   return (
     <section>
       <Container>
         {/* <SEO metaInfo={meta} pagePath={slug.current} /> */}
-        <Styled.h2>{name}</Styled.h2>
+        <Styled.h2>Sales Data Dashboard</Styled.h2>
 
-        <p>Orgranizer Name: {organizer.content.main.name}</p>
+        <p>For fundraiser: {name}</p>
 
         <Styled.h3>Menu:</Styled.h3>
         <ul sx={productList}>
@@ -42,29 +50,17 @@ const Fundraiser = ({path, pageContext}) => {
                 }
               }
             } = menuItem
-
-            // console.log(image)
             const productId = `${fundraiserId.current}-${id}`
+
             return (
               <li key={id}>
-                {name} {' - '}
-                <span>${price}</span> {' '}&nbsp;&nbsp;
-                <button
-                  sx={{variant: 'buttons.outline'}}
-                  className='snipcart-add-item'
-                  data-item-id={productId}
-                  data-item-price={price}
-                  data-item-name={name}
-                  data-item-description='short description here'
-                  data-item-image={image.asset.url}
-                  data-item-url={'https://mfr.netlify.app/' + slug.current + '/'}
-                >Add to Cart
-                </button>
+                <Product {...menuItem} productId={productId} addToTotalSales={addToTotalSales} />
               </li>
             )
           })}
 
         </ul>
+        <h2>Total Sales across all products: ${totalSales}</h2>
       </Container>
     </section>
   )

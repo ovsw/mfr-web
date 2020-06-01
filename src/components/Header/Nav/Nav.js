@@ -7,7 +7,7 @@ const Nav = () => {
   return (
     <ul sx={navStyles}>
       {navItems.map(({url, text}) => (
-        <li key='url'>
+        <li key={url}>
           <Link to={url} activeClassName='active'>{text}</Link>
         </li>
       ))}
